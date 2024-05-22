@@ -1,7 +1,3 @@
-/* Your Code Here */
-const employeeArray = ["Gray", "Worm", "Security", 1]
-
-
 const createEmployeeRecord = (employee) => {
   let [name, lastName, position, pay] = employee
   const employeeRecord = {
@@ -26,56 +22,56 @@ const createEmployeeRecords = (employeeList) => {
 }
 
 function createTimeInEvent(timestamp){
-    let hourIn = timestamp.split(" ")[1]
-    let dateIn = timestamp.split(" ")[0]
-    hourIn = Number(hourIn)
-    const timeInObj = {
-      type: "TimeIn",
-      hour: hourIn,
-      date: dateIn
-    }
+  let hourIn = timestamp.split(" ")[1]
+  let dateIn = timestamp.split(" ")[0]
+  hourIn = Number(hourIn)
+  const timeInObj = {
+    type: "TimeIn",
+    hour: hourIn,
+    date: dateIn
+  }
 
-    this.timeInEvents.push(timeInObj)
-    return this
+  this.timeInEvents.push(timeInObj)
+  return this
 }
 
 function createTimeOutEvent(timestamp){
-    let hourOut = timestamp.split(" ")[1]
-    let dateOut = timestamp.split(" ")[0]
-    hourOut = Number(hourOut)
-    const timeOutObj = {
-      type: "TimeOut",
-      hour: hourOut,
-      date: dateOut
-    }
+  let hourOut = timestamp.split(" ")[1]
+  let dateOut = timestamp.split(" ")[0]
+  hourOut = Number(hourOut)
+  const timeOutObj = {
+    type: "TimeOut",
+    hour: hourOut,
+    date: dateOut
+  }
 
-    this.timeOutEvents.push(timeOutObj)
-    return this
+  this.timeOutEvents.push(timeOutObj)
+  return this
 }
 
 function hoursWorkedOnDate(workedOnDate){
-    const timeInEvents = this.timeInEvents
-    const timeOutEvents = this.timeOutEvents
-    let timeInHour
-    let timeOutHour
-    timeInEvents.forEach((timeIn) => {
-      if(timeIn.date === workedOnDate){
-        timeInHour =+ timeIn.hour
+  const timeInEvents = this.timeInEvents
+  const timeOutEvents = this.timeOutEvents
+  let timeInHour
+  let timeOutHour
+  timeInEvents.forEach((timeIn) => {
+    if(timeIn.date === workedOnDate){
+    timeInHour =+ timeIn.hour
+  }
+  })
+  timeOutEvents.forEach((timeOut) => {
+      if(timeOut.date === workedOnDate){
+        timeOutHour =+ timeOut.hour
       }
-    })
-    timeOutEvents.forEach((timeOut) => {
-        if(timeOut.date === workedOnDate){
-          timeOutHour =+ timeOut.hour
-        }
-      })
-    const hoursWorked = (timeOutHour - timeInHour) / 100
-    return hoursWorked
+  })
+  const hoursWorked = (timeOutHour - timeInHour) / 100
+  return hoursWorked
 }
 
 function wagesEarnedOnDate(workedOnDate){
-    let workingHours = hoursWorkedOnDate.call(this, workedOnDate)
-    let payRate = this.payPerHour
-    return payRate * workingHours
+  let workingHours = hoursWorkedOnDate.call(this, workedOnDate)
+  let payRate = this.payPerHour
+  return payRate * workingHours
 }
 
 /*
@@ -100,13 +96,11 @@ const allWagesFor = function () {
 }
 
 function findEmployeeByFirstName(employeeList, firstName){
-    let name
-    console.log(name)
+  return employeeList.find((employee) => employee.firstName === firstName)
 }
 
-// let record = createEmployeeRecord(employeeArray)
-// createTimeInEvent.call(record, "2044-03-15 0900")
-// createTimeOutEvent.call(record, "2044-03-15 1100")
-// wagesEarnedOnDate.call(record, "2044-03-15")
-// findEmployeeByFirstName
-
+function calculatePayroll(employeeRecords){
+  let payroll = 0
+  employeeRecords.map(record => payroll += allWagesFor.call(record))
+  return payroll
+}
