@@ -65,12 +65,14 @@ function hoursWorkedOnDate(workedOnDate){
       }
   })
   const hoursWorked = (timeOutHour - timeInHour) / 100
+
   return hoursWorked
 }
 
 function wagesEarnedOnDate(workedOnDate){
   let workingHours = hoursWorkedOnDate.call(this, workedOnDate)
   let payRate = this.payPerHour
+
   return payRate * workingHours
 }
 
@@ -102,5 +104,6 @@ function findEmployeeByFirstName(employeeList, firstName){
 function calculatePayroll(employeeRecords){
   let payroll = 0
   employeeRecords.map(record => payroll += allWagesFor.call(record))
+  
   return payroll
 }
