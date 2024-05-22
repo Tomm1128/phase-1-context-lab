@@ -17,12 +17,26 @@ const createEmployeeRecord = (employee) => {
 }
 
 const createEmployeeRecords = (employeeList) => {
-    let employeeRecords = []
-    employeeList.forEach((employee) => {
-        employeeRecords.push(createEmployeeRecord(employee))
-    })
+  let employeeRecords = []
+  employeeList.forEach((employee) => {
+  employeeRecords.push(createEmployeeRecord(employee))
+  })
 
-    return employeeRecords
+  return employeeRecords
+}
+
+function createTimeInEvent(timestamp){
+    let hourIn = timestamp.split(" ")[1]
+    let dateIn = timestamp.split(" ")[0]
+    hourIn = Number(hourIn)
+    const timeInObj = {
+      type: "TimeIn",
+      hour: hourIn,
+      date: dateIn
+    }
+
+    this.timeInEvents.push(timeInObj)
+    return this
 }
 
 
@@ -47,5 +61,6 @@ const allWagesFor = function () {
     return payable
 }
 
-// createEmployeeRecord(employeeArray)
+let record = createEmployeeRecord(employeeArray)
+createTimeInEvent.call(record, "2014-02-28 1400")
 
