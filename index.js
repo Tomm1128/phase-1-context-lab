@@ -1,4 +1,30 @@
 /* Your Code Here */
+const employeeArray = ["Gray", "Worm", "Security", 1]
+
+
+const createEmployeeRecord = (employee) => {
+  let [name, lastName, position, pay] = employee
+  const employeeRecord = {
+    firstName: name,
+    familyName: lastName,
+    title: position,
+    payPerHour: pay,
+    timeInEvents: [],
+    timeOutEvents: []
+  }
+
+  return employeeRecord
+}
+
+const createEmployeeRecords = (employeeList) => {
+    let employeeRecords = []
+    employeeList.forEach((employee) => {
+        employeeRecords.push(createEmployeeRecord(employee))
+    })
+
+    return employeeRecords
+}
+
 
 /*
  We're giving you this function. Take a look at it, you might see some usage
@@ -20,4 +46,6 @@ const allWagesFor = function () {
 
     return payable
 }
+
+// createEmployeeRecord(employeeArray)
 
